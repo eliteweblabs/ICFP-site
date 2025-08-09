@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Stylized map of Greater Boston">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111217"/>
+      <stop offset="1" stop-color="#0b0c10"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#20242f" stroke-width="1"/>
+    </pattern>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComposite operator="in" in2="SourceAlpha"/>
+      <feBlend mode="overlay"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <rect width="1200" height="800" fill="url(#grid)" opacity="0.25"/>
+
+  <!-- Abstract coastline / landmass shapes (not to scale) -->
+  <g fill="#0f1116" stroke="#2a3140" stroke-width="2" opacity="0.9">
+    <path d="M120 520 C220 420, 320 440, 420 360 C520 280, 640 300, 720 340 C820 392, 900 380, 980 420 C1040 450, 1100 500, 1120 560 C1140 620, 1090 660, 1000 660 C900 660, 820 640, 740 640 C620 640, 520 700, 420 700 C300 700, 200 660, 160 620 C120 580, 100 560, 120 520 Z"/>
+    <path d="M520 300 C560 260, 620 240, 700 250 C760 258, 820 290, 860 320 C900 350, 900 380, 860 380 C820 380, 760 360, 700 352 C620 342, 560 352, 520 340 C500 334, 500 314, 520 300 Z" opacity="0.75"/>
+  </g>
+
+  <!-- Major roads lines (stylized) -->
+  <g fill="none" stroke="#3a4154" stroke-width="3" opacity="0.7">
+    <path d="M120 560 L360 560 L520 480 L740 520 L980 500"/>
+    <path d="M260 700 L420 620 L600 620 L760 700"/>
+    <path d="M520 360 L620 420 L780 420 L900 380"/>
+  </g>
+
+  <!-- City nodes (stylized) -->
+  <g fill="#cbd5e1" opacity="0.6">
+    <circle cx="600" cy="420" r="4"/>
+    <circle cx="520" cy="480" r="4"/>
+    <circle cx="700" cy="520" r="4"/>
+    <circle cx="860" cy="380" r="4"/>
+  </g>
+
+  <rect width="1200" height="800" fill="#000" opacity="0.12" filter="url(#grain)"/>
+</svg>
+
+

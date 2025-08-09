@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" role="img" aria-label="NFPA">
+  <rect width="90" height="90" fill="#ffffff" stroke="#0b0c10"/>
+  <rect x="15" y="15" width="60" height="60" fill="none" stroke="#0b0c10" stroke-width="6"/>
+  <path d="M45 30 C52 38, 50 44, 45 52 C40 44, 38 38, 45 30 Z" fill="#e11d48"/>
+  <text x="45" y="78" font-family="Inter, Arial, sans-serif" font-size="12" text-anchor="middle" fill="#0b0c10">NFPA</text>
+</svg>
+

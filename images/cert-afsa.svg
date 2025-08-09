@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" role="img" aria-label="AFSA">
+  <rect width="120" height="90" fill="none"/>
+  <polygon points="60,8 108,82 12,82" fill="#e11d48"/>
+  <circle cx="60" cy="50" r="18" fill="#0b0c10"/>
+  <text x="60" y="78" font-family="Inter, Arial, sans-serif" font-size="14" text-anchor="middle" fill="#0b0c10">AFSA</text>
+</svg>
+

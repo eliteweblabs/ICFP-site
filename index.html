@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inner City Fire Protection</title>
+    <meta
+      name="description"
+      content="Inner City Fire Protection, Inc. — Boston MA minority-owned fire protection company established in 2012. Service, system design, inspections, and 24/7 emergency response."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23e11d48' d='M32 4c10 10 14 18 14 24s-5 14-14 14S18 34 18 28 22 14 32 4z'/%3E%3C/svg%3E"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"
+    ></script>
+    <script defer src="./config.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <img
+            class="brand-logo"
+            src="images/ICFP-logo.png"
+            alt="Inner City Fire Protection logo"
+          />
+          <span class="brand-name">Inner City Fire Protection</span>
+        </div>
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="nav"
+          aria-label="Toggle navigation"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav id="nav" class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#design">System Design</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#photos">Photos</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Fire protection you can trust</h1>
+        <p>
+          Minority-owned and operated in Boston, MA since 2012 — inspections,
+          design, testing, and 24/7 emergency service.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact">Request Service</a>
+          <a class="btn" href="#faqs">View FAQs</a>
+        </div>
+      </div>
+    </section>
+
+    <main id="main">
+      <section id="about" class="section">
+        <div class="container">
+          <h2>About</h2>
+          <div class="content two-col">
+            <div>
+              <p>
+                Inner City Fire Protection, Inc. is a local Boston, MA minority
+                owned and operated fire protection company that was established
+                in 2012. Joel Williams, owner and president, has over 22 years
+                of experience in the fire protection industry. Starting out in
+                New York City as a young, fast-moving apprentice, he took the
+                skills he learned on the road, traveling and working in Texas,
+                Georgia, North and South Carolina, and New Jersey.
+              </p>
+              <p>
+                Mr. Williams has experienced all aspects of the industry:
+                fitting pipe, attending welding school, local union #550 courses
+                and schooling, along with NFPA design courses. After years of
+                traveling and developing knowledge, he was ready to lead after
+                learning from some of the best in the trade. In 1999 Joel became
+                a journeyman sprinkler fitter. He soon after decided to settle
+                in the greater Boston area in 2000.
+              </p>
+              <p>
+                Joel was always ready, willing, and able to become part of the
+                union brotherhood. In 2004 the dream became his reality. Six
+                years later, due to the building trades in Boston being slowed
+                by hard times, he was laid off. After almost losing the home he
+                built for his family, he had to leave the past behind and get
+                something going fast. “When the going gets tough, only the tough
+                get going.” Joel became a local contractor. Now the future looks
+                bright and promising for Inner City Fire Protection.
+              </p>
+              <p class="tag">A DBE and MBE certified company</p>
+            </div>
+            <aside class="note">
+              <p>
+                <strong>Coverage:</strong> We travel up to a 30-mile radius from
+                our Boston office and provide 24/7 emergency response.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="design" class="section alt">
+        <div class="container">
+          <h2>System Design</h2>
+          <p>
+            Whether it is a preaction system, dry or wet system, or a deluge
+            system, Inner City Fire Protection is capable of handling your
+            needs.
+          </p>
+          <p>
+            Our NICET Level IV engineers are capable of handling any of your
+            company’s design needs.
+          </p>
+        </div>
+      </section>
+
+      <section id="customers" class="section">
+        <div class="container">
+          <h2>Customers</h2>
+          <p>Coming soon.</p>
+        </div>
+      </section>
+
+      <section id="hood-cleaning" class="section alt">
+        <div class="container">
+          <h2>Hood Cleaning</h2>
+          <p>Coming soon.</p>
+        </div>
+      </section>
+
+      <section id="service" class="section">
+        <div class="container">
+          <h2>Service</h2>
+          <div class="content">
+            <p>
+              From replacing a single fire sprinkler head to adding additional
+              heads or changing all the heads, Inner City Fire Protection is the
+              company to call.
+            </p>
+            <p>
+              We pride ourselves in our response to our customers’ needs.
+              Whether it’s fixing a sprinkler system during the day or on an
+              emergency basis, our staff is fully qualified to handle the
+              problem.
+            </p>
+            <p>
+              Whether you have a wet, dry, preaction, or deluge system our
+              personnel are capable of handling your needs. Our personnel are
+              also certified in backflow testing as well as testing and repairs
+              on fire pumps.
+            </p>
+            <ul class="checklist">
+              <li>
+                Response time for emergencies is 2 hours with 24-hour on-call
+                service.
+              </li>
+              <li>
+                We’ll handle record keeping to ensure your company is notified
+                when your fire sprinkler system, backflows, or fire
+                extinguishers are due for testing.
+              </li>
+              <li>Service radius up to 30 miles from our Boston office.</li>
+            </ul>
+            <h3>Inspection Frequency</h3>
+            <p>
+              Whether your system(s) need to be inspected annually,
+              semi-annually, or quarterly, all inspections include:
+            </p>
+            <ul class="checklist">
+              <li>Testing to ensure the system(s) are operational</li>
+              <li>Operational test of local alarms</li>
+              <li>Inspection of alarm and control valves</li>
+              <li>
+                Verification that all areas of the building have adequate fire
+                sprinkler coverage
+              </li>
+              <li>Submission of documentation to you</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="photos" class="section">
+        <div class="container">
+          <h2>Photos</h2>
+          <div class="gallery">
+            <a
+              href="images/IMG_0770.jpg"
+              data-lightbox
+              data-caption="Project photo"
+            >
+              <img
+                src="images/IMG_0770.jpg"
+                alt="Project photo IMG_0770"
+                loading="lazy"
+              />
+            </a>
+            <a
+              href="images/IMG_7592.jpg"
+              data-lightbox
+              data-caption="Project photo"
+            >
+              <img
+                src="images/IMG_7592.jpg"
+                alt="Project photo IMG_7592"
+                loading="lazy"
+              />
+            </a>
+            <a
+              href="images/IMG_8884.jpg"
+              data-lightbox
+              data-caption="Project photo"
+            >
+              <img
+                src="images/IMG_8884.jpg"
+                alt="Project photo IMG_8884"
+                loading="lazy"
+              />
+            </a>
+            <a
+              href="images/IMG_8885.jpg"
+              data-lightbox
+              data-caption="Project photo"
+            >
+              <img
+                src="images/IMG_8885.jpg"
+                alt="Project photo IMG_8885"
+                loading="lazy"
+              />
+            </a>
+            <a
+              href="images/IMG_9418.jpg"
+              data-lightbox
+              data-caption="Project photo"
+            >
+              <img
+                src="images/IMG_9418.jpg"
+                alt="Project photo IMG_9418"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <p class="small" style="margin-top: 0.75rem">
+            Add more JPGs to the <code>images/</code> folder and I can include
+            them here.
+          </p>
+        </div>
+      </section>
+
+      <section id="faqs" class="section alt">
+        <div class="container">
+          <h2>FAQs</h2>
+          <details>
+            <summary>Are your sprinkler fitters licensed and insured?</summary>
+            <p>
+              All of our sprinkler fitters are fully trained and licensed, in
+              addition to being insured to keep your mind at ease.
+            </p>
+          </details>
+          <details>
+            <summary>
+              What if I have an emergency during non-business hours?
+            </summary>
+            <p>We provide 24-hour service through our C.O.C. program.</p>
+          </details>
+          <details>
+            <summary>What type of projects can you handle?</summary>
+            <p>
+              We have extensive experience with hospitals, manufacturing
+              facilities, industrial sites, warehouses, prisons, office
+              buildings, and schools/colleges, as well as all aspects of
+              residential work. There is no job too big or too small.
+            </p>
+          </details>
+          <details>
+            <summary>
+              What about safety procedures? Are your sprinkler fitters safety
+              conscious?
+            </summary>
+            <p>
+              We insist that all of our sprinkler fitters are OSHA trained and
+              certified. We provide additional safety training on an ongoing
+              basis. We take safety seriously.
+            </p>
+          </details>
+          <details>
+            <summary>Do you do fire pump tests?</summary>
+            <p>
+              Yes, we provide a full range of services, including fire pump
+              tests.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <h2>Contact</h2>
+          <div class="content two-col">
+            <div>
+              <address class="card">
+                <p>P.O. Box 190405<br />Boston, MA 02119</p>
+                <p>
+                  Telephone: <a href="tel:+16173648700">(617) 364-8700</a
+                  ><br />Email:
+                  <a href="mailto:Joel@innercityfireprotection.com"
+                    >Joel@innercityfireprotection.com</a
+                  >
+                </p>
+              </address>
+            </div>
+            <form id="contact-form" class="card" novalidate>
+              <div class="form-field">
+                <label for="name"
+                  >Name <span aria-hidden="true">(Required)</span></label
+                >
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label for="email"
+                  >Email <span aria-hidden="true">(Required)</span></label
+                >
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="form-field">
+                <label for="message"
+                  >Message <span aria-hidden="true">(Required)</span></label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <!-- Honeypot -->
+              <div class="form-field hp" aria-hidden="true">
+                <label for="company">Company</label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Send</button>
+                <p id="form-status" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="certs">
+        <div class="container">
+          <ul class="cert-logos" aria-label="Certifications and affiliations">
+            <li>
+              <img src="images/cert-afsa.png" alt="AFSA" loading="lazy" />
+            </li>
+            <li>
+              <img
+                src="images/cert-hfsc.jpg"
+                alt="Home Fire Sprinkler Coalition"
+                loading="lazy"
+              />
+            </li>
+            <li>
+              <img src="images/cert-nfpa.jpg" alt="NFPA" loading="lazy" />
+            </li>
+            <li>
+              <img src="images/cert-nfsa.png" alt="NFSA" loading="lazy" />
+            </li>
+            <li>
+              <img
+                src="images/cert-nicet.png"
+                alt="NICET Certified"
+                loading="lazy"
+              />
+            </li>
+            <li>
+              <img src="images/cert-sfpe.png" alt="SFPE" loading="lazy" />
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-inner">
+        <p>
+          &copy; <span id="year"></span> Inner City Fire Protection. All rights
+          reserved.
+        </p>
+        <p class="small">Content adapted from historical site capture.</p>
+      </div>
+    </footer>
+  </body>
+</html>

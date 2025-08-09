@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Boston choropleth-style abstract map">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0c10"/>
+      <stop offset="1" stop-color="#101219"/>
+    </linearGradient>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.06"/>
+      </feComponentTransfer>
+    </filter>
+    <style>
+      .tile{stroke:#2c3444;stroke-width:1.5;}
+    </style>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#bg)"/>
+
+  <!-- Abstract municipality tiles (inspired by a choropleth, not geographically accurate) -->
+  <g>
+    <rect class="tile" x="380" y="340" width="70" height="70" fill="#1f2a44"/>
+    <rect class="tile" x="450" y="340" width="70" height="70" fill="#203256"/>
+    <rect class="tile" x="450" y="270" width="70" height="70" fill="#1c2642"/>
+    <rect class="tile" x="520" y="340" width="70" height="70" fill="#26406e"/>
+    <rect class="tile" x="520" y="410" width="70" height="70" fill="#1b2340"/>
+    <rect class="tile" x="310" y="340" width="70" height="70" fill="#1c2240"/>
+    <rect class="tile" x="310" y="410" width="70" height="70" fill="#263b66"/>
+    <rect class="tile" x="380" y="410" width="70" height="70" fill="#22345a"/>
+    <rect class="tile" x="590" y="340" width="70" height="70" fill="#1a203a"/>
+    <rect class="tile" x="590" y="270" width="70" height="70" fill="#263c68"/>
+    <rect class="tile" x="240" y="340" width="70" height="70" fill="#1a1f38"/>
+    <rect class="tile" x="240" y="270" width="70" height="70" fill="#273e6c"/>
+    <rect class="tile" x="170" y="340" width="70" height="70" fill="#23355c"/>
+    <rect class="tile" x="170" y="410" width="70" height="70" fill="#1c2746"/>
+  </g>
+
+  <!-- subtle grain overlay to reduce banding -->
+  <rect width="800" height="800" fill="#000" opacity="0.18" filter="url(#grain)"/>
+</svg>
+
+
