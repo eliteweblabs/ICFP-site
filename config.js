@@ -1,4 +1,7 @@
-// Placeholder config for local development. Replace with real values.
-// For production, set your real keys in this file or via your host's env injection.
-window.SUPABASE_URL = "";
-window.SUPABASE_ANON_KEY = "";
+// Web3Forms — https://web3forms.com
+window.WEB3FORMS_KEY = "";
+
+// Vapi voice AI — https://dashboard.vapi.ai
+// Paste your Public Key and Assistant ID here to activate the chat widget.
+window.VAPI_PUBLIC_KEY = "";
+window.VAPI_ASSISTANT_ID = "";

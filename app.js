@@ -2,16 +2,6 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Mobile nav toggle
-  const toggle = document.querySelector(".nav-toggle");
-  const nav = document.getElementById("nav");
-  if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
-    });
-  }
-
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
@@ -21,8 +11,6 @@
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
-      if (nav) nav.classList.remove("open");
-      if (toggle) toggle.setAttribute("aria-expanded", "false");
     });
   });
 
@@ -69,30 +57,82 @@
     });
   });
 
-  // Hero background positioning heuristic: center interesting area on load
-  (function positionHeroBackground() {
+  // Hero slideshow
+  (function initHeroSlider() {
     const hero = document.querySelector(".hero");
-    if (!hero) return;
-    const img = new Image();
-    img.src = "./images/IMG_8884.jpg";
-    img.onload = () => {
-      const isPortrait = img.naturalHeight > img.naturalWidth;
-      // If portrait, push focal point higher so faces/subjects likely visible
-      // If landscape, slight upward bias to avoid cropping heads
-      const y = isPortrait ? "30%" : "35%";
-      hero.style.setProperty("--hero-bg-pos", `center ${y}`);
-      // Simulate a temporary sticky hero feel by adjusting background position on scroll
-      const onScroll = () => {
-        const rect = hero.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        // Only influence while hero is in view (first viewport height)
-        const t = Math.max(0, Math.min(1, 1 - rect.top / vh));
-        const dy = Math.round(t * 40); // up to 40px shift
-        hero.style.setProperty("--hero-bg-pos", `center calc(${y} + ${dy}px)`);
-      };
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-    };
+    const slides = Array.from(document.querySelectorAll(".hero-slide"));
+    const dotsWrap = document.querySelector(".hero-dots");
+    const progressBar = document.querySelector(".hero-progress-bar");
+    const prevBtn = document.querySelector(".hero-prev");
+    const nextBtn = document.querySelector(".hero-next");
+    if (!slides.length || !dotsWrap) return;
+
+    const DURATION = 5000;
+    let current = 0;
+    let timer = null;
+
+    const dots = slides.map((_, i) => {
+      const btn = document.createElement("button");
+      btn.className = "hero-dot" + (i === 0 ? " active" : "");
+      btn.setAttribute("aria-label", "Go to slide " + (i + 1));
+      btn.addEventListener("click", () => goTo(i, true));
+      dotsWrap.appendChild(btn);
+      return btn;
+    });
+
+    function goTo(index, manual) {
+      slides[current].classList.remove("active");
+      dots[current].classList.remove("active");
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add("active");
+      dots[current].classList.add("active");
+      if (manual) resetTimer();
+    }
+
+    function resetTimer() {
+      clearTimeout(timer);
+      if (progressBar) {
+        progressBar.style.transition = "none";
+        progressBar.style.width = "0%";
+        progressBar.getBoundingClientRect(); // force reflow
+      }
+      scheduleNext();
+    }
+
+    function scheduleNext() {
+      if (progressBar) {
+        progressBar.style.transition = "width " + DURATION + "ms linear";
+        progressBar.style.width = "100%";
+      }
+      timer = setTimeout(() => goTo(current + 1), DURATION);
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", () => goTo(current - 1, true));
+    if (nextBtn) nextBtn.addEventListener("click", () => goTo(current + 1, true));
+
+    if (hero) {
+      hero.addEventListener("mouseenter", () => {
+        clearTimeout(timer);
+        if (progressBar) progressBar.style.transition = "none";
+      });
+      hero.addEventListener("mouseleave", () => {
+        if (!document.hidden) resetTimer();
+      });
+
+      let touchX = 0;
+      hero.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+      hero.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 44) dx > 0 ? goTo(current - 1, true) : goTo(current + 1, true);
+      }, { passive: true });
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) clearTimeout(timer);
+      else resetTimer();
+    });
+
+    scheduleNext();
   })();
 
   // Contact form
@@ -106,23 +146,21 @@
     if (type) statusEl.classList.add(type);
   }
 
-  async function submitToSupabase(payload) {
-    if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
-      throw new Error(
-        "Missing Supabase config. Create config.js with SUPABASE_URL and SUPABASE_ANON_KEY."
-      );
+  async function submitForm(payload) {
+    const accessKey = window.WEB3FORMS_KEY;
+    if (!accessKey) {
+      throw new Error("Missing WEB3FORMS_KEY in config.js");
     }
-    const client = supabase.createClient(
-      window.SUPABASE_URL,
-      window.SUPABASE_ANON_KEY
-    );
-    const { data, error } = await client
-      .from("contact_messages")
-      .insert(payload)
-      .select("id")
-      .single();
-    if (error) throw error;
-    return data;
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ access_key: accessKey, ...payload }),
+    });
+    const json = await res.json();
+    if (!res.ok || json.success === false) {
+      throw new Error(json.message || "Submission failed");
+    }
+    return json;
   }
 
   function validate(formData) {
@@ -135,16 +173,7 @@
     if (!name || !email || !message) return { ok: false, reason: "required" };
     const emailOk = /.+@.+\..+/.test(email);
     if (!emailOk) return { ok: false, reason: "email" };
-    return {
-      ok: true,
-      payload: {
-        name,
-        email,
-        phone,
-        message,
-        submitted_at: new Date().toISOString(),
-      },
-    };
+    return { ok: true, payload: { name, email, phone, message } };
   }
 
   if (form) {
@@ -154,7 +183,7 @@
       const result = validate(formData);
 
       if (!result.ok) {
-        if (result.reason === "spam") return; // silently drop
+        if (result.reason === "spam") return;
         if (result.reason === "email")
           setStatus("Please provide a valid email address.", "error");
         else setStatus("Please fill in all required fields.", "error");
@@ -163,7 +192,7 @@
 
       setStatus("Sending…");
       try {
-        await submitToSupabase(result.payload);
+        await submitForm(result.payload);
         setStatus("Thanks! Your message has been sent.", "success");
         form.reset();
       } catch (err) {
@@ -175,4 +204,38 @@
       }
     });
   }
+
+  // Vapi voice AI chat widget
+  (function initVapi() {
+    const key = window.VAPI_PUBLIC_KEY;
+    const assistantId = window.VAPI_ASSISTANT_ID;
+    if (!key || !assistantId) return;
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+    script.defer = true;
+    script.async = true;
+    script.onload = function () {
+      window.vapiInstance = window.vapiSDK.run({
+        apiKey: key,
+        assistant: assistantId,
+        config: {
+          position: "bottom-right",
+          offset: "40px",
+          width: "50px",
+          height: "50px",
+          idle: {
+            color: "#e11d48",
+            type: "round",
+            icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
+          },
+          active: {
+            color: "#b91c3b",
+            type: "round",
+            icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg",
+          },
+        },
+      });
+    };
+    document.head.appendChild(script);
+  })();
 })();
