@@ -13,138 +13,192 @@
 
       #icfp-logo { display: block; width: 100%; height: auto; overflow: visible; }
 
-      /* ── One-shot keyframes ───────────────────────────────────────── */
+      /* ─────────────────────────────────────────────────────────────
+         ONE-SHOT keyframes — one unique sequence per shape
+         Shape numbering follows document (paint) order, bottom-up:
+           s7 = lowest piece       (most intense)
+           s4 = lower-right red    (intense)
+           s6 = right red          (intense)
+           s5 = left-lower orange  (moderate)
+           s3 = tilted centre rect (moderate)
+           s1 = large upper-right  (subtle)
+           s2 = yellow tip top     (subtle, last)
+      ───────────────────────────────────────────────────────────── */
 
-      /* Bottom blocks: intense rapid swings, fires up immediately */
-      @keyframes flicker-bottom {
+      /* s7 — lowest, fires hardest and first */
+      @keyframes flicker-s7 {
         0%   { opacity: 0; }
-        3%   { opacity: 0.95; }
-        6%   { opacity: 0.02; }
-        10%  { opacity: 1; }
-        14%  { opacity: 0; }
-        18%  { opacity: 0.92; }
-        22%  { opacity: 0.04; }
-        27%  { opacity: 1; }
-        32%  { opacity: 0.1; }
-        37%  { opacity: 0.98; }
-        43%  { opacity: 0.3; }
+        4%   { opacity: 1; }
+        8%   { opacity: 0; }
+        13%  { opacity: 0.95; }
+        17%  { opacity: 0.02; }
+        23%  { opacity: 1; }
+        28%  { opacity: 0.06; }
+        34%  { opacity: 0.9; }
+        41%  { opacity: 0.22; }
         49%  { opacity: 1; }
-        56%  { opacity: 0.62; }
-        63%  { opacity: 1; }
-        70%  { opacity: 0.8; }
-        78%  { opacity: 0.96; }
-        86%  { opacity: 0.88; }
+        57%  { opacity: 0.55; }
+        65%  { opacity: 1; }
+        73%  { opacity: 0.8; }
+        82%  { opacity: 0.97; }
+        91%  { opacity: 0.93; }
+        100% { opacity: 1; }
+      }
+
+      /* s4 — lower-right, intense but out of phase with s7 */
+      @keyframes flicker-s4 {
+        0%   { opacity: 0; }
+        5%   { opacity: 0.88; }
+        10%  { opacity: 0.04; }
+        16%  { opacity: 1; }
+        21%  { opacity: 0; }
+        27%  { opacity: 0.92; }
+        33%  { opacity: 0.14; }
+        39%  { opacity: 0.97; }
+        46%  { opacity: 0.35; }
+        54%  { opacity: 0.95; }
+        62%  { opacity: 0.6; }
+        70%  { opacity: 1; }
+        78%  { opacity: 0.84; }
+        87%  { opacity: 0.96; }
+        94%  { opacity: 0.91; }
+        100% { opacity: 1; }
+      }
+
+      /* s6 — right section, third distinct pattern */
+      @keyframes flicker-s6 {
+        0%   { opacity: 0; }
+        3%   { opacity: 0.93; }
+        7%   { opacity: 0.04; }
+        12%  { opacity: 0.86; }
+        18%  { opacity: 0.08; }
+        24%  { opacity: 0.98; }
+        30%  { opacity: 0; }
+        37%  { opacity: 0.88; }
+        44%  { opacity: 0.42; }
+        52%  { opacity: 1; }
+        60%  { opacity: 0.68; }
+        68%  { opacity: 0.95; }
+        77%  { opacity: 0.87; }
+        86%  { opacity: 0.96; }
         93%  { opacity: 0.98; }
         100% { opacity: 1; }
       }
 
-      /* Middle blocks: moderate, starts after bottom is already burning */
-      @keyframes flicker-mid {
+      /* s5 — left-lower, moderate, delayed ignition */
+      @keyframes flicker-s5 {
         0%   { opacity: 0; }
-        18%  { opacity: 0; }
+        13%  { opacity: 0; }
+        18%  { opacity: 0.78; }
+        23%  { opacity: 0.07; }
+        29%  { opacity: 0.88; }
+        35%  { opacity: 0.18; }
+        42%  { opacity: 0.95; }
+        49%  { opacity: 0.46; }
+        56%  { opacity: 1; }
+        64%  { opacity: 0.7; }
+        72%  { opacity: 0.95; }
+        80%  { opacity: 0.86; }
+        88%  { opacity: 0.96; }
+        94%  { opacity: 0.93; }
+        100% { opacity: 1; }
+      }
+
+      /* s3 — centre rect, moderate, different rhythm from s5 */
+      @keyframes flicker-s3 {
+        0%   { opacity: 0; }
+        17%  { opacity: 0; }
         22%  { opacity: 0.82; }
-        27%  { opacity: 0.05; }
-        32%  { opacity: 0.9; }
-        37%  { opacity: 0.18; }
-        43%  { opacity: 0.95; }
-        49%  { opacity: 0.42; }
-        55%  { opacity: 1; }
-        62%  { opacity: 0.68; }
-        69%  { opacity: 0.95; }
-        76%  { opacity: 0.82; }
-        84%  { opacity: 0.96; }
-        92%  { opacity: 0.9; }
+        28%  { opacity: 0.05; }
+        34%  { opacity: 0.9; }
+        41%  { opacity: 0.26; }
+        48%  { opacity: 0.93; }
+        55%  { opacity: 0.52; }
+        62%  { opacity: 1; }
+        70%  { opacity: 0.74; }
+        78%  { opacity: 0.97; }
+        85%  { opacity: 0.88; }
+        92%  { opacity: 0.97; }
+        97%  { opacity: 0.93; }
         100% { opacity: 1; }
       }
 
-      /* Top blocks: subtle, starts late, eases in gently */
-      @keyframes flicker-top {
+      /* s1 — large upper shape, subtle, late */
+      @keyframes flicker-s1 {
         0%   { opacity: 0; }
-        38%  { opacity: 0; }
-        43%  { opacity: 0.6; }
-        49%  { opacity: 0.18; }
-        55%  { opacity: 0.82; }
-        61%  { opacity: 0.42; }
-        67%  { opacity: 0.9; }
-        73%  { opacity: 0.68; }
-        79%  { opacity: 0.95; }
-        86%  { opacity: 0.8; }
-        93%  { opacity: 0.97; }
+        30%  { opacity: 0; }
+        36%  { opacity: 0.62; }
+        42%  { opacity: 0.14; }
+        48%  { opacity: 0.8; }
+        55%  { opacity: 0.36; }
+        62%  { opacity: 0.88; }
+        69%  { opacity: 0.58; }
+        76%  { opacity: 0.93; }
+        83%  { opacity: 0.76; }
+        90%  { opacity: 0.97; }
+        96%  { opacity: 0.89; }
         100% { opacity: 1; }
       }
 
-      /* ── Idle loop keyframes (standalone SVG preview) ── */
-      @keyframes idle-bottom {
-        0%, 100% { opacity: 1; }
-        12%  { opacity: 0.65; }
-        22%  { opacity: 0.88; }
-        33%  { opacity: 0.55; }
-        46%  { opacity: 0.82; }
-        58%  { opacity: 0.62; }
+      /* s2 — yellow tip, subtlest, last to arrive */
+      @keyframes flicker-s2 {
+        0%   { opacity: 0; }
+        37%  { opacity: 0; }
+        43%  { opacity: 0.54; }
+        50%  { opacity: 0.2; }
+        57%  { opacity: 0.76; }
+        63%  { opacity: 0.44; }
         70%  { opacity: 0.88; }
-        82%  { opacity: 0.7; }
-      }
-      @keyframes idle-mid {
-        0%, 100% { opacity: 1; }
-        18%  { opacity: 0.85; }
-        38%  { opacity: 0.92; }
-        58%  { opacity: 0.82; }
-        78%  { opacity: 0.9; }
-      }
-      @keyframes idle-top {
-        0%, 100% { opacity: 1; }
-        30%  { opacity: 0.92; }
-        60%  { opacity: 0.95; }
+        77%  { opacity: 0.64; }
+        83%  { opacity: 0.93; }
+        89%  { opacity: 0.8; }
+        95%  { opacity: 0.97; }
+        100% { opacity: 1; }
       }
 
-      /* ── Loop mode (no .logo-anim-once) ── */
-      svg#icfp-logo:not(.logo-anim-once) .flame-bottom {
-        animation: idle-bottom 1.7s -0.3s linear infinite;
-      }
-      svg#icfp-logo:not(.logo-anim-once) .flame-mid {
-        animation: idle-mid 2.3s -0.9s linear infinite;
-      }
-      svg#icfp-logo:not(.logo-anim-once) .flame-top {
-        animation: idle-top 3s -1.4s linear infinite;
+      /* ── One-shot rules — each shape has its own duration ── */
+      svg#icfp-logo.logo-anim-once .flame-s7 { opacity: 0; animation: flicker-s7 1500ms linear forwards; }
+      svg#icfp-logo.logo-anim-once .flame-s4 { opacity: 0; animation: flicker-s4 1450ms linear forwards; }
+      svg#icfp-logo.logo-anim-once .flame-s6 { opacity: 0; animation: flicker-s6 1520ms linear forwards; }
+      svg#icfp-logo.logo-anim-once .flame-s5 { opacity: 0; animation: flicker-s5 1600ms linear forwards; }
+      svg#icfp-logo.logo-anim-once .flame-s3 { opacity: 0; animation: flicker-s3 1650ms linear forwards; }
+      svg#icfp-logo.logo-anim-once .flame-s1 { opacity: 0; animation: flicker-s1 1750ms linear forwards; }
+      svg#icfp-logo.logo-anim-once .flame-s2 { opacity: 0; animation: flicker-s2 1820ms linear forwards; }
+
+      /* ── Idle loop — single keyframe, 7 different durations + offsets ── */
+      @keyframes idle-flicker {
+        0%, 100% { opacity: 1; }
+        15% { opacity: 0.78; }
+        30% { opacity: 0.92; }
+        48% { opacity: 0.68; }
+        63% { opacity: 0.88; }
+        80% { opacity: 0.74; }
       }
 
-      /* ── One-shot mode (.logo-anim-once) ── */
-      svg#icfp-logo.logo-anim-once .flame-bottom {
-        opacity: 0;
-        animation: flicker-bottom 1500ms linear forwards;
-      }
-      svg#icfp-logo.logo-anim-once .flame-mid {
-        opacity: 0;
-        animation: flicker-mid 1500ms linear forwards;
-      }
-      svg#icfp-logo.logo-anim-once .flame-top {
-        opacity: 0;
-        animation: flicker-top 1500ms linear forwards;
-      }
+      svg#icfp-logo:not(.logo-anim-once) .flame-s7 { animation: idle-flicker 1.65s -0.3s  linear infinite; }
+      svg#icfp-logo:not(.logo-anim-once) .flame-s4 { animation: idle-flicker 2.10s -1.1s  linear infinite; }
+      svg#icfp-logo:not(.logo-anim-once) .flame-s6 { animation: idle-flicker 1.90s -0.7s  linear infinite; }
+      svg#icfp-logo:not(.logo-anim-once) .flame-s5 { animation: idle-flicker 2.40s -0.4s  linear infinite; }
+      svg#icfp-logo:not(.logo-anim-once) .flame-s3 { animation: idle-flicker 2.80s -1.6s  linear infinite; }
+      svg#icfp-logo:not(.logo-anim-once) .flame-s1 { animation: idle-flicker 3.20s -0.9s  linear infinite; }
+      svg#icfp-logo:not(.logo-anim-once) .flame-s2 { animation: idle-flicker 3.55s -2.2s  linear infinite; }
     </style>
   </defs>
 
-  <!-- FLAME MARK — each shape individually classed by vertical position -->
+  <!-- FLAME MARK — 7 individually animated shapes -->
   <g id="bfuZn6.tif">
     <g>
-      <!-- top: large orange background shape, upper-right -->
-      <path class="st6 logo-mark flame-top"    d="M311.087,186.966c4.756-5.148,9.047-11.029,12.732-17.018,11.081-18.01,18.193-39.299,19.19-60.529l.374-2.74c7.404,19.652,14.085,39.628,18.455,60.226,2.014,9.492,3.634,19.139,4.371,28.816l-68.476,33.161-52.004-107.18c.088-.446,1.515-.255,1.959-.313,41.265-5.316,44.826-51.029,41.862-84.325-.755-8.478-2.232-16.868-3.775-25.221,14.342,16.193,25.089,35.696,31.259,56.486,11.468,38.647,7.833,81.119-5.948,118.638Z"/>
-      <!-- top: yellow upper-left tip -->
-      <path class="st5 logo-mark flame-top"    d="M159.406,136.412l.101-.632c20.905-31.541,48.053-58.8,77.818-81.997.256.094.011.376-.037.53-2.236,7.215-4.957,13.876-6.803,21.344-3.386,13.699-5.685,26.741.289,40.028,6.407,14.249,13.944,28.045,20.475,42.242l.134.687-117.852,56.878c-.237-1.964-.25-3.973-.199-5.959.242-9.409,1.884-18.835,4.447-27.857,3.423-12.049,8.705-23.46,14.732-34.382"/>
-      <!-- mid: tilted centre rect -->
-      <rect  class="st1 logo-mark flame-mid"   x="202.228" y="180.513" width="73.471" height="72.802" transform="translate(-70.457 125.187) rotate(-25.719)"/>
-      <!-- bottom: lower-right dark-red section -->
-      <path class="st4 logo-mark flame-bottom" d="M292.571,243.452l30.415,63.283c-3.218,1.788-6.337,3.867-9.63,5.58-13.738,7.145-27.632,10.637-43,12.346-6.47.72-13.036,1.155-19.529,1.065l-24.364-50.534,66.109-31.74Z"/>
-      <!-- mid: left-lower orange section -->
-      <path class="st6 logo-mark flame-mid"    d="M180.547,204.926l31.357,65.238-43.341,21.079c-.508-.011-4.384-4.644-4.996-5.385-13.968-16.924-23.338-37.839-28.542-59.103l45.522-21.829Z"/>
-      <!-- bottom: right red section -->
-      <path class="st0 logo-mark flame-bottom" d="M331.677,299.937l-29.451-61.118,64.67-31.262c.278.169.266.371.298.652.547,4.79-.028,12.618-.389,17.576-2.052,28.187-12.815,56.11-35.128,74.151Z"/>
-      <!-- bottom: lowest piece -->
-      <path class="st7 logo-mark flame-bottom" d="M216.814,280.114l21.547,44.948c-22.578-1.766-44.564-10.7-61.576-25.599l40.029-19.349Z"/>
+      <path class="st6 logo-mark flame-s1" d="M311.087,186.966c4.756-5.148,9.047-11.029,12.732-17.018,11.081-18.01,18.193-39.299,19.19-60.529l.374-2.74c7.404,19.652,14.085,39.628,18.455,60.226,2.014,9.492,3.634,19.139,4.371,28.816l-68.476,33.161-52.004-107.18c.088-.446,1.515-.255,1.959-.313,41.265-5.316,44.826-51.029,41.862-84.325-.755-8.478-2.232-16.868-3.775-25.221,14.342,16.193,25.089,35.696,31.259,56.486,11.468,38.647,7.833,81.119-5.948,118.638Z"/>
+      <path class="st5 logo-mark flame-s2" d="M159.406,136.412l.101-.632c20.905-31.541,48.053-58.8,77.818-81.997.256.094.011.376-.037.53-2.236,7.215-4.957,13.876-6.803,21.344-3.386,13.699-5.685,26.741.289,40.028,6.407,14.249,13.944,28.045,20.475,42.242l.134.687-117.852,56.878c-.237-1.964-.25-3.973-.199-5.959.242-9.409,1.884-18.835,4.447-27.857,3.423-12.049,8.705-23.46,14.732-34.382"/>
+      <rect  class="st1 logo-mark flame-s3" x="202.228" y="180.513" width="73.471" height="72.802" transform="translate(-70.457 125.187) rotate(-25.719)"/>
+      <path class="st4 logo-mark flame-s4" d="M292.571,243.452l30.415,63.283c-3.218,1.788-6.337,3.867-9.63,5.58-13.738,7.145-27.632,10.637-43,12.346-6.47.72-13.036,1.155-19.529,1.065l-24.364-50.534,66.109-31.74Z"/>
+      <path class="st6 logo-mark flame-s5" d="M180.547,204.926l31.357,65.238-43.341,21.079c-.508-.011-4.384-4.644-4.996-5.385-13.968-16.924-23.338-37.839-28.542-59.103l45.522-21.829Z"/>
+      <path class="st0 logo-mark flame-s6" d="M331.677,299.937l-29.451-61.118,64.67-31.262c.278.169.266.371.298.652.547,4.79-.028,12.618-.389,17.576-2.052,28.187-12.815,56.11-35.128,74.151Z"/>
+      <path class="st7 logo-mark flame-s7" d="M216.814,280.114l21.547,44.948c-22.578-1.766-44.564-10.7-61.576-25.599l40.029-19.349Z"/>
     </g>
   </g>
 
-  <!-- INNERCITY — no animation, always visible -->
+  <!-- INNERCITY — always visible, no animation -->
   <g>
     <path class="st2" d="M37.666,442.769v-86.945h2.353v86.945h-2.353Z"/>
     <path class="st2" d="M62.382,442.769v-86.945h3.237l35.896,82.679v-82.679h2.353v86.945h-3.09l-36.043-83.12v83.12h-2.353Z"/>
@@ -157,7 +211,7 @@
     <path class="st2" d="M453.109,442.769v-37.221l-16.034-49.724h2.502l14.858,46.489,16.622-46.489h2.502l-18.095,49.724v37.221h-2.355Z"/>
   </g>
 
-  <!-- FIRE PROTECTION — no animation, always visible -->
+  <!-- FIRE PROTECTION — always visible, no animation -->
   <g>
     <path class="st3" d="M113.043,499.805v-26.947h11.171v.73h-10.442v11.671h8.115v.73h-8.115v13.816h-.73Z"/>
     <path class="st3" d="M132.649,499.805v-26.947h.73v26.947h-.73Z"/>
