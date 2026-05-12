@@ -204,38 +204,4 @@
       }
     });
   }
-
-  // Vapi voice AI chat widget
-  (function initVapi() {
-    const key = window.VAPI_PUBLIC_KEY;
-    const assistantId = window.VAPI_ASSISTANT_ID;
-    if (!key || !assistantId) return;
-    const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-    script.defer = true;
-    script.async = true;
-    script.onload = function () {
-      window.vapiInstance = window.vapiSDK.run({
-        apiKey: key,
-        assistant: assistantId,
-        config: {
-          position: "bottom-right",
-          offset: "40px",
-          width: "50px",
-          height: "50px",
-          idle: {
-            color: "#e11d48",
-            type: "round",
-            icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
-          },
-          active: {
-            color: "#b91c3b",
-            type: "round",
-            icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg",
-          },
-        },
-      });
-    };
-    document.head.appendChild(script);
-  })();
 })();
