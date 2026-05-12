@@ -149,7 +149,7 @@
   async function submitForm(payload) {
     const accessKey = window.WEB3FORMS_KEY;
     if (!accessKey) {
-      throw new Error("Missing WEB3FORMS_KEY in config.js");
+      throw new Error("Missing WEB3FORMS_KEY in config/vendor-public-client-ids.js");
     }
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",

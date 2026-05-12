@@ -22,9 +22,6 @@ node_modules/
 .env
 .env.*
 
-# Local API keys (Web3Forms, Vapi) — do not commit
-config.local.js
-
 # Misc
 Thumbs.db
 
