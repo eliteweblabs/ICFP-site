@@ -24,3 +24,6 @@ node_modules/
 
 # Misc
 Thumbs.db
+
+# Raw video exports with 1684 in name — too large for GitHub; use CDN/drive
+images/*1684*.mov
