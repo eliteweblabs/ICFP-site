@@ -1,17 +1,18 @@
 /**
  * Vapi Server URL handler for submitICFPVoiceLead → Resend notification email.
  *
- * Deploy: Vercel (route: /api/vapi-voice-lead). In Vapi tool settings, set Server URL to:
- *   https://<your-deployment>.vercel.app/api/vapi-voice-lead
+ * Deploy:
+ *   - Vercel: /api/vapi-voice-lead (same file as serverless handler)
+ *   - Railway: run `npm start` (see server.js); URL is https://<railway-host>/api/vapi-voice-lead
  *
- * Resend send endpoint (for reference — your server calls this; Vapi does not):
+ * Resend send endpoint (your server calls this; Vapi does not):
  *   POST https://api.resend.com/emails
  *
- * Env (Vercel → Project → Settings → Environment Variables):
+ * Env:
  *   RESEND_API_KEY   — Resend API key (re_...)
  *   RESEND_FROM      — Verified sender, e.g. "ICFP Leads <leads@yourdomain.com>"
  *   NOTIFY_TO        — Business inbox (comma-separated for multiple)
- *   VAPI_TOOL_SECRET — Optional; if set, require Authorization: Bearer <same>
+ *   VAPI_WEBHOOK_SECRET or VAPI_TOOL_SECRET — Optional; if set, require Authorization: Bearer <same>
  */
 
 const RESEND_URL = "https://api.resend.com/emails";
@@ -40,7 +41,8 @@ function collectToolCalls(message) {
 }
 
 function authOk(req) {
-  const secret = process.env.VAPI_TOOL_SECRET;
+  const secret =
+    process.env.VAPI_WEBHOOK_SECRET || process.env.VAPI_TOOL_SECRET;
   if (!secret) return true;
   const h = req.headers.authorization || "";
   const token = h.startsWith("Bearer ") ? h.slice(7).trim() : "";
