@@ -1,0 +1,7 @@
+{
+  "name": "icfp-site",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
