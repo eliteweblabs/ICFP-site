@@ -10,7 +10,7 @@
  *
  * Env:
  *   RESEND_API_KEY   — Resend API key (re_...)
- *   RESEND_FROM      — Verified sender, e.g. "ICFP Leads <leads@yourdomain.com>"
+ *   RESEND_FROM      — Verified sender, e.g. "ICFP Leads <leads@innercityfireprotection.com>"
  *   NOTIFY_TO        — Business inbox (comma-separated for multiple)
  *   VAPI_WEBHOOK_SECRET or VAPI_TOOL_SECRET — Optional; if set, require Authorization: Bearer <same>
  */
