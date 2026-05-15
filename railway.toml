@@ -1,0 +1,6 @@
+# Force Node `server.js` so the static site and /api/vapi-voice-lead share one process.
+[build]
+builder = "RAILPACK"
+
+[deploy]
+startCommand = "npm start"
