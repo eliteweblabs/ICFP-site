@@ -5,6 +5,7 @@
 const path = require("path");
 const express = require("express");
 const vapiHandler = require("./api/vapi-voice-lead.js");
+const { handleInbound, handleNoAnswer } = require("./api/telnyx-voice.js");
 
 const app = express();
 const rootDir = path.join(__dirname);
@@ -18,6 +19,21 @@ app.get("/healthz", (_req, res) => {
 
 app.all("/api/vapi-voice-lead", (req, res) => {
   void vapiHandler(req, res);
+});
+
+/** Telnyx TeXML: ring human first, fall back to VAPI after 20 s. */
+app.post("/api/telnyx-voice", (req, res) => {
+  try {
+    handleInbound(req, res);
+  } catch (e) {
+    res.status(500).set("Content-Type", "text/xml").send(
+      `<?xml version="1.0" encoding="UTF-8"?><Response><Say>${e.message}</Say></Response>`
+    );
+  }
+});
+
+app.post("/api/telnyx-no-answer", (req, res) => {
+  handleNoAnswer(req, res);
 });
 
 app.use(
