@@ -118,11 +118,17 @@ function handleInbound(req, res) {
     return res.set("Content-Type", "text/xml").send(xmlDialVapi());
   }
 
-  // 4. Normal flow — ring human first, fall back to Vapi on no-answer
-  const forwardNumber = forwardTo();
-  const fallbackUrl   = `${baseUrl()}/api/telnyx-no-answer`;
+  // 4. Normal flow — ring human first if FORWARD_TO_NUMBER is set and valid, else go straight to Vapi
+  const forwardNumber = process.env.FORWARD_TO_NUMBER || "";
+  const vapi = vapiNumber();
 
-  console.log(`[${client}] ringing ${forwardNumber} (20s), fallback → Vapi`);
+  if (!forwardNumber || forwardNumber === vapi) {
+    console.log(`[${client}] no valid forward target, routing direct to Vapi`);
+    return res.set("Content-Type", "text/xml").send(xmlDialVapi());
+  }
+
+  const fallbackUrl = `${baseUrl()}/api/telnyx-no-answer`;
+  console.log(`[${client}] ringing ${forwardNumber} (12s), fallback → Vapi`);
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
