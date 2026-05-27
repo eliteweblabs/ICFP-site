@@ -126,7 +126,7 @@ function handleInbound(req, res) {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Dial timeout="20" action="${fallbackUrl}" method="POST" callerId="${BUSINESS_NUMBER}">
+  <Dial timeout="12" action="${fallbackUrl}" method="POST" callerId="${BUSINESS_NUMBER}">
     ${forwardNumber}
   </Dial>
 </Response>`;
