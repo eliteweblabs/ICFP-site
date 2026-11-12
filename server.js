@@ -36,6 +36,16 @@ app.post("/api/telnyx-no-answer", (req, res) => {
   handleNoAnswer(req, res);
 });
 
+const NOINDEX_PROFILE = path.join(rootDir, "company-technology-profile.html");
+const NOINDEX_ROBOTS =
+  "noindex, nofollow, noarchive, nosnippet, noimageindex";
+
+app.get(["/company-technology-profile", "/company-technology-profile.html"], (_req, res) => {
+  res.setHeader("X-Robots-Tag", NOINDEX_ROBOTS);
+  res.setHeader("Cache-Control", "private, no-store");
+  res.sendFile(NOINDEX_PROFILE);
+});
+
 app.use(
   express.static(rootDir, {
     extensions: ["html"],

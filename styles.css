@@ -534,3 +534,117 @@ textarea:focus {
   padding: 0.4rem 0.6rem;
   cursor: pointer;
 }
+
+/* Unlisted company / technology profile (noindex) */
+body.stack-doc {
+  background: var(--bg);
+}
+.stack-doc__header {
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 0 1.5rem;
+  background: linear-gradient(
+    180deg,
+    rgba(225, 29, 72, 0.08),
+    transparent 70%
+  );
+}
+.stack-doc__header-inner {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.stack-doc__logo {
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.35rem;
+  flex-shrink: 0;
+}
+.stack-doc__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.stack-doc h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  line-height: 1.2;
+}
+.stack-doc__lede {
+  margin: 0;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.stack-doc__main {
+  padding: 1.5rem 0 3rem;
+  display: grid;
+  gap: 1.25rem;
+}
+.stack-block h2 {
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+}
+.meta-grid {
+  margin: 0;
+  display: grid;
+  gap: 0.85rem 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.meta-grid > div {
+  margin: 0;
+}
+.meta-grid dt {
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-weight: 600;
+}
+.meta-grid dd {
+  margin: 0.2rem 0 0;
+}
+.stack-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.stack-table th,
+.stack-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.stack-table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.stack-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.stack-doc__note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+.stack-doc__footer {
+  padding: 0.5rem 0 0;
+  color: var(--muted);
+}
+.stack-doc__footer p {
+  margin: 0.35rem 0;
+}
+.stack-doc a {
+  color: #fecdd3;
+}
+.stack-doc code {
+  font-size: 0.9em;
+}
