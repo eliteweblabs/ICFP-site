@@ -1,0 +1,20 @@
+# Deploy to Railway on every push to main.
+# In GitHub: Settings → Secrets → Actions → New repository secret
+#   RAILWAY_TOKEN — from https://railway.com/account/tokens
+# In Railway: service → Settings → confirm GitHub repo is linked, or use this Action only.
+name: Deploy to Railway
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy
+        run: railway up --detach --ci
