@@ -52,6 +52,10 @@ app.use(
     etag: true,
     maxAge: process.env.NODE_ENV === "production" ? "1d" : 0,
     setHeaders(res, filepath) {
+      if (filepath.endsWith("company-technology-profile.html")) {
+        res.setHeader("X-Robots-Tag", NOINDEX_ROBOTS);
+        res.setHeader("Cache-Control", "private, no-store");
+      }
       if (filepath.endsWith(".css") || filepath.endsWith(".js")) {
         res.setHeader("cache-control", "public, max-age=3600");
       }
