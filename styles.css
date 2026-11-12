@@ -535,6 +535,10 @@ textarea:focus {
   cursor: pointer;
 }
 
+html.icfp-profile-pending body > *:not(script):not(template) {
+  visibility: hidden;
+}
+
 /* Unlisted company / technology profile (noindex) */
 body.stack-doc {
   background: var(--bg);

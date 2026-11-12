@@ -50,7 +50,8 @@ app.get(
   res.setHeader("X-Robots-Tag", NOINDEX_ROBOTS);
   res.setHeader("Cache-Control", "private, no-store");
   res.sendFile(NOINDEX_PROFILE);
-});
+  },
+);
 
 app.use(
   express.static(rootDir, {
@@ -69,8 +70,21 @@ app.use(
   }),
 );
 
+function isCompanyProfilePath(reqPath) {
+  const normalized = reqPath.replace(/\/$/, "") || "/";
+  return (
+    normalized === "/company-technology-profile" ||
+    reqPath === "/company-technology-profile.html"
+  );
+}
+
 /** Match existing repo 404 page for unknown paths except /api/*. */
-app.use((_req, res) => {
+app.use((req, res) => {
+  if (isCompanyProfilePath(req.path)) {
+    res.setHeader("X-Robots-Tag", NOINDEX_ROBOTS);
+    res.setHeader("Cache-Control", "private, no-store");
+    return res.status(200).sendFile(NOINDEX_PROFILE);
+  }
   res.status(404).sendFile(path.join(rootDir, "404.html"));
 });
 
