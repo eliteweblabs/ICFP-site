@@ -1,0 +1,109 @@
+INNER CITY FIRE PROTECTION, INC.
+Company & Technology Profile (Unlisted Reference)
+Prepared for procurement, compliance, and employment due-diligence reviewers
+Document version: 12 November 2026
+
+This summary is for reviewer circulation only. It is not intended for public
+marketing or search indexing.
+
+
+--------------------------------------------------------------------------------
+ORGANIZATION
+--------------------------------------------------------------------------------
+
+Legal name:           Inner City Fire Protection, Inc.
+Trade name:           Inner City Fire Protection (ICFP)
+Established:          2012 (Boston, Massachusetts)
+Certifications:       DBE and MBE certified (Massachusetts)
+Primary business:     Fire protection — design, installation, inspection,
+                      testing, and 24/7 emergency service
+Mailing address:      P.O. Box 190405, Boston, MA 02119
+Business telephone:   (617) 364-8700
+Leadership contact:   Joel Williams, Owner & President
+                      Joel@innercityfireprotection.com
+
+
+--------------------------------------------------------------------------------
+DOMAIN & EMAIL
+--------------------------------------------------------------------------------
+
+Primary domain:       innercityfireprotection.com
+Domain registrar:     Name.com (DNS hosted with Name.com nameservers)
+Domain registered:    18 December 2012 (public RDAP record)
+Business email:       Google Workspace (Gmail / Google Apps)
+Email authentication: Google Workspace MX records; staff and business addresses
+                      use the @innercityfireprotection.com domain
+
+
+--------------------------------------------------------------------------------
+WEBSITE & HOSTING HISTORY
+--------------------------------------------------------------------------------
+
+Period                 Platform              Notes
+---------------------  --------------------  ---------------------------------
+2012 – ~March 2025     WordPress on Kinsta   Managed WordPress hosting for the
+                                             public marketing site (approx.
+                                             12+ years).
+
+~March 2025 – present Railway               Custom lightweight site (HTML, CSS,
+                                             Node/Express) on Railway; same
+                                             primary domain.
+
+Railway hosting began approximately March 2025 (~20 months as of November 2026).
+
+
+--------------------------------------------------------------------------------
+CURRENT TECHNOLOGY STACK
+--------------------------------------------------------------------------------
+
+Area                          Provider / technology        Purpose
+----------------------------  ---------------------------  ----------------------
+Public website hosting        Railway                      Marketing site and
+                                                           small server-side API
+                                                           routes
+
+Application runtime           Node.js 18+ / Express        Static file delivery
+                                                           and webhook endpoints
+
+Business email                Google Workspace             Staff mail, calendar,
+                                                           organizational accounts
+
+Contact form delivery         Web3Forms                    Relays public contact
+                                                           form submissions to
+                                                           business inbox
+
+Transactional email           Resend                       Outbound notifications
+(voice leads)                                              from voice-assistant
+                                                           lead flow
+
+Telephony carrier             Telnyx                       Inbound business
+                                                           telephone routing
+
+Voice assistant               Vapi                         Automated call handling
+(after-hours)                                              when live staff
+                                                           unavailable
+
+Source control                GitHub                       Version control; Railway
+                                                           deploys from repository
+
+
+--------------------------------------------------------------------------------
+DATA HANDLING (HIGH LEVEL)
+--------------------------------------------------------------------------------
+
+• The public marketing site collects voluntary contact form submissions and
+  voice-lead metadata for business follow-up only.
+
+• No customer payment card data is processed on the company website.
+
+• Operational project and employee records are maintained outside this public
+  web stack (internal business systems).
+
+
+--------------------------------------------------------------------------------
+QUESTIONS
+--------------------------------------------------------------------------------
+
+Joel Williams — Joel@innercityfireprotection.com — (617) 364-8700
+
+Public website (marketing): https://innercityfireprotection.com
